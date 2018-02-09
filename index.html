@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>TwitchViewer</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/app.css">
+
+    </head>
+    <body>
+        <div id="app">
+            <div class="container">
+                <div class="btn-group btn-group-lg">
+                    <button class="btn btn-secondary" @click="displayStreamers('All')">All</button>
+                    <button class="btn btn-secondary" @click="displayStreamers('Online')">Online</button>
+                    <button class="btn btn-secondary" @click="displayStreamers('Offline')">Offline</button>
+                </div>
+                <div class="card" v-for="streamer in displayStreams" @click="openStream(streamer.streamInfo.url)">
+                    <img v-if="streamer.streamInfo.profile_banner" class="card-img-top" :src="streamer.streamInfo.profile_banner" :alt="streamer.streamInfo.display_name">
+                    <div class="card-img-top" v-else></div>
+                    <div class="card-body">
+                        <img :src="streamer.streamInfo.logo" :alt="streamer.streamInfo.display_name" class="rounded-circle">
+                        <h5 class="card-title">{{ streamer.streamInfo.display_name }} <span class="card-title float-right">{{ streamer.status }}</span></h5>
+                        <div v-if="streamer.data">
+                            <h6 class="card-subtitle mb-2 text-muted">Playing: {{ streamer.data.game }} for {{ streamer.data.viewers }} viewers</h6>
+                            <p class="card-text">Status: {{ streamer.data.channel.status }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+    <script src="/js/app.js"></script>
+    </body>
+</html>

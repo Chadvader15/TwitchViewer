@@ -1,0 +1,25 @@
+.card {
+    margin-top: 10px;
+    cursor: pointer;   
+}
+
+.container {
+    margin-top: 70px;
+}
+
+.card-img-top {
+    min-height: 340px;
+    background-image: url("https://static.twitchcdn.net/assets/bg_glitch_pattern-34ca2e369aad1ed33b57f3d2d59c70eb.png");
+    background-repeat: repeat;
+}
+
+body {
+    background-color: #6441A4;
+}
+
+.rounded-circle {
+    max-width: 75px;
+    max-height: 75px;
+    float: left;
+    margin-right: 7.5px;
+}
